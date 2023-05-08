@@ -11,12 +11,9 @@ Note.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    prompt: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    answer: {
-      type: DataTypes.STRING,
     },
 
     userId: {
