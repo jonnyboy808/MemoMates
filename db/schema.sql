@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS memos_db;
+CREATE DATABASE memos_db;
