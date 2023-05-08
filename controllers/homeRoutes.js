@@ -8,13 +8,13 @@ router.get('/', withAuth, async (req, res) => {
     try {
         const userData = await User.findAll({
             attributes: { exclude: ['password'] },
-            order: [['username', 'ASC']],
+            order: [['email', 'ASC']],
         });
 
         const users = userData.map((user) => user.get({ plain: true }));
 
         const noteData = await Note.findAll({
-            include: [{ model: User, attributes: ['username'] }],
+            include: [{ model: User, attributes: ['email'] }],
             order: [['created_at', 'DESC']],
         });
         const notes = noteData.map((note) => note.get({ plain: true }));
