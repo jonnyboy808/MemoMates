@@ -14,7 +14,7 @@ const loginFormHandler = async function(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/main');
     } else {
       alert('Failed to login');
     }
@@ -42,7 +42,7 @@ const loginFormHandler = async function(event) {
         });
       
         if (response.ok) {
-          document.location.replace('/dashboard');
+          document.location.replace('/main');
         } else {
           alert('Failed to sign up');
         }
