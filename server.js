@@ -9,7 +9,7 @@ const routes = require('./controllers/');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const sequelize = require('./config/config');
+const sequelize = require('./config/connection');
 
 // creates a new sequelize store by using the express session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
