@@ -11,7 +11,7 @@ const loginFormHandler = async function (event) {
       password: passwordEl.value,
     }),
     headers: { "Content-Type": "application/json" },
-  });
+  });}
 
   if (response.ok) {
     document.location.replace("/main");
