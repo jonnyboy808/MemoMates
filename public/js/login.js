@@ -1,22 +1,24 @@
-const loginFormHandler = async function(event) {
+const loginFormHandler = async (event) => {
+  // Stop the browser from submitting the form so we can do so with JavaScript
   event.preventDefault();
 
-  const usernameEl = document.querySelector('#email-input-login');
-  const passwordEl = document.querySelector('#password-input-login');
+  // Gather the data from the form elements on the page
+  const email = document.querySelector('#email-input-login').value.trim();
+  const password = document.querySelector('#password-input-login').value.trim();
 
-  const response = await fetch('/api/users/login', {
-    method: 'POST',
-    body: JSON.stringify({
-      email: usernameEl.value,
-      password: passwordEl.value,
-    }),
-    headers: { 'Content-Type': 'application/json' },
-  });
+  if (email && password) {
+    // Send the e-mail and password to the server
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  if (response.ok) {
-    document.location.replace('/saved-connections');
-  } else {
-    alert('Failed to login');
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Failed to log in');
+    }
   }
 };
 
