@@ -16,6 +16,10 @@ Note.init(
       allowNull: false,
     },
 
+    body: {
+      type: DataTypes.STRING,
+    },
+
     userId: {
       type: DataTypes.INTEGER,
       references: {
@@ -29,7 +33,7 @@ Note.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "notes",
+    modelName: "note",
   }
 );
 

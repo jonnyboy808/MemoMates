@@ -15,4 +15,4 @@ Note.hasMany(Items, {});
 
 Items.belongsTo(Note, {});
 
-module.exports = { User, Note };
+module.exports = { User, Note, Items };
