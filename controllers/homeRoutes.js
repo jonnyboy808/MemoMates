@@ -11,6 +11,11 @@ router.get("/", withAuth, async (req, res) => {
     });
 
     const users = userData.map((user) => user.get({ plain: true }));
+    try {
+        const userData = await User.findAll({
+            attributes: { exclude: ['password'] },
+            order: [['email', 'ASC']],
+        });
 
     const noteData = await Note.findAll({
       include: [{ model: User, attributes: ["username"] }],
@@ -27,6 +32,11 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+        const noteData = await Note.findAll({
+            include: [{ model: User, attributes: ['email'] }],
+            order: [['created_at', 'DESC']],
+        });
+        const notes = noteData.map((note) => note.get({ plain: true }));
 
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
