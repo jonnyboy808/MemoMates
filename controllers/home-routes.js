@@ -53,6 +53,23 @@ router.get("/connection", withAuth, async (req, res) => {
   }
 });
 
+
+// notes by id
+router.get("/notes/:id", withAuth, async (req, res) => {
+  try {
+    const noteData = await Note.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
+
+    const note = noteData.get({ plain: true });
+
+    res.render("note", { note, logged_In: req.session.logged_In });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_In) {
