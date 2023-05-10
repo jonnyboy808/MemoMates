@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       last_contact,
       details,
       steps,
-      user_id: req.session.user_id,
+      user_id: req.session.user_Id,
     });
 
     res.status(200).json(NoteData);
