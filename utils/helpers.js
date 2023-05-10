@@ -1,13 +1,12 @@
-const brand = document.querySelector(".navbar-brand");
-anime({
-  targets: brand,
-  keyframes: [
-    {translateY: -20},
-    {translateX: 75},
-    {translateY: 40},
-    {translateX: 0},
-    {translateY: 0}
-  ],
-  duration: 4000,
-  easing: 'easeOutElastic(1, .8)',
-});
+// module.exports = {
+//     animateMemoMates
+// }
+// const animateMemoMates = () => {
+// const memoMates = document.querySelector(".navbar-brand span");
+// anime({
+//   targets: memoMates,
+//   opacity: [0,1],
+//   duration: 1500,
+//   easing: 'easeInOutQuad',
+// });
+// }

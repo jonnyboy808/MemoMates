@@ -3,8 +3,10 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
+const Handlebars = require('handlebars');
 const routes = require('./controllers/');
 
+Handlebars.registerHelper('animateMemoMates', helpers.animateMemoMates);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
