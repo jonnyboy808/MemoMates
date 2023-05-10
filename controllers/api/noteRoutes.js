@@ -13,6 +13,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// get one Note
+router.get("/:id", async (req, res) => {
+  try {
+    const NoteData = await Note.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
+    res.status(200).json(NoteData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 //create new Note
 router.post("/", async (req, res) => {
   const { name, word, last_contact, details, steps } = req.body;
