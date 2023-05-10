@@ -20,12 +20,12 @@ Note.init(
     },
     last_contact: { type: DataTypes.STRING },
 
-    // details: {
-    //   type: DataTypes.STRING,
-    // },
-    // steps: {
-    //   type: DataTypes.STRING,
-    // },
+    details: {
+      type: DataTypes.STRING,
+    },
+    steps: {
+      type: DataTypes.STRING,
+    },
 
     user_id: {
       type: DataTypes.INTEGER,

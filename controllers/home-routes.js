@@ -22,6 +22,7 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/connection", withAuth, async (req, res) => {
+
   if (!req.session.logged_in) {
     console.log("redirecting new-connection to home");
     debugger;
@@ -33,10 +34,12 @@ router.get("/connection", withAuth, async (req, res) => {
       include: [{ model: Note }],
     });
 
-    const user = userData.get({ plain: true });
 
-    console.log(userData);
-    console.log(user);
+      const user = userData.get({ plain: true });
+
+      console.log(userData);
+      console.log(user);
+
 
     res.render("connection", {
       ...user,
@@ -46,6 +49,7 @@ router.get("/connection", withAuth, async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+
   }
 });
 
@@ -59,6 +63,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+
   router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
       res.redirect('/');
@@ -67,4 +72,5 @@ router.get("/login", (req, res) => {
   
     res.render('signup');
   });
+
 module.exports = router;
