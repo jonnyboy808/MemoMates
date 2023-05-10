@@ -21,6 +21,9 @@ router.post("/", async (req, res) => {
     const NoteData = await Note.create({
       name,
       word,
+      // last_contact,
+      // details,
+      // steps,
       user_id: req.session.user_id,
     });
 

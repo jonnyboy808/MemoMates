@@ -22,14 +22,20 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/connection", withAuth, async (req, res) => {
+<<<<<<< HEAD
   if (!req.session.loggedIn) {
     //console.log("redirecting new-connection to home");
 
+=======
+  if (!req.session.logged_in) {
+    console.log("redirecting new-connection to home");
+    debugger;
+>>>>>>> f6d7edf195439b578c4ec43b3424858991de8f32
     res.redirect("/");
     return;
   }
   try {
-    const userData = await User.findByPk(req.session.userId, {
+    const userData = await User.findByPk(req.session.user_Id, {
       include: [{ model: Note }],
     });
 
@@ -59,6 +65,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+<<<<<<< HEAD
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -67,4 +74,14 @@ router.get("/signup", (req, res) => {
 
   res.render("signup");
 });
+=======
+  router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
+  });
+>>>>>>> f6d7edf195439b578c4ec43b3424858991de8f32
 module.exports = router;
