@@ -5,7 +5,6 @@
     "seed": "node seeds/seed.js"
   },
   "dependencies": {
-    "animejs": "^3.2.1",
     "aos": "^2.3.4",
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.6",
