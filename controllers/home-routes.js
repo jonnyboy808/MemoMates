@@ -23,6 +23,7 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/connection", withAuth, async (req, res) => {
+
   if (!req.session.logged_in) {
     console.log("redirecting new-connection to home");
     debugger;
@@ -34,31 +35,52 @@ router.get("/connection", withAuth, async (req, res) => {
       include: [{ model: Note }],
     });
 
-    const user = userData.get({ plain: true });
 
-    console.log(userData);
-    console.log(user);
+      const user = userData.get({ plain: true });
+
+      console.log(userData);
+      console.log(user);
+
 
     res.render("connection", {
       ...user,
       //user: user.toJSON(),
       // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
+      logged_In: req.session.logged_In,
     });
+  } catch (err) {
+    res.status(500).json(err);
+
+  }
+});
+
+
+// notes by id
+router.get("/notes/:id", withAuth, async (req, res) => {
+  try {
+    const noteData = await Note.findByPk(req.params.id, {
+      include: [{ model: User }],
+    });
+
+    const note = noteData.get({ plain: true });
+
+    res.render("note", { note, logged_In: req.session.logged_In });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.logged_In) {
     res.render("/");
     return;
   }
 
   res.render("login");
 });
+
 
   router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
@@ -68,4 +90,5 @@ router.get("/login", (req, res) => {
   
     res.render("signup");
   });
+
 module.exports = router;

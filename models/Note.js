@@ -15,7 +15,15 @@ Note.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    history: {
+    word: {
+      type: DataTypes.STRING,
+    },
+    last_contact: { type: DataTypes.STRING },
+
+    details: {
+      type: DataTypes.STRING,
+    },
+    steps: {
       type: DataTypes.STRING,
     },
 
