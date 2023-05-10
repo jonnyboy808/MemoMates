@@ -10,40 +10,56 @@
 
     <form class="form new-connection-form">
       <div class="form-group">
-        <label for="connection-name">Name of your Connection:</label>
+        <label for="connection-name">Name of your Connection</label>
         <input
           class="form-input"
           type="text"
           id="connection-name"
           name="connection-name"
+          required
         />
+
       </div>
       <div class="form-group">
-        <label for="history">How did you meet?</label>
+        <label for="word">One word to describe your connection</label>
+        <input
+          class="form-input"
+          id="one-word"
+          name="connection-description"
+          required
+        ></input>
+       
+      </div>
+
+      <div class="form-group">
+        <label for="last-contact">Last contact with your connection</label>
+        <input
+          class="form-input"
+          id="last-contact"
+          name="connection-description"
+        ></input>
+      </div>
+
+        <div class="form-group">
+        <label for="steps">Any additional details you like to add</label>
         <textarea
           class="form-input"
-          id="history"
+          id="details"
           name="connection-description"
         ></textarea>
       </div>
 
+
       <div class="form-group">
-        <label for="history">Last Contact</label>
+        <label for="steps">What steps can you take to reconnect?</label>
         <textarea
           class="form-input"
-          id="history"
+          id="steps"
           name="connection-description"
         ></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="history">What steps can you take to reconnect?</label>
-        <textarea
-          class="form-input"
-          id="history"
-          name="connection-description"
-        ></textarea>
-      </div>
+
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -53,7 +69,7 @@
 
   {{#if notes.length}}
     <div class="col-md-6 connection-list">
-      <h3>Notes:</h3>
+      <h3>Saved Connections</h3>
 
       {{#each notes as |note|}}
         <div class="row mb-2">

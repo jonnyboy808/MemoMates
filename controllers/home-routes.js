@@ -22,9 +22,15 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/connection", withAuth, async (req, res) => {
+<<<<<<< HEAD
+  if (!req.session.loggedIn) {
+    //console.log("redirecting new-connection to home");
+
+=======
   if (!req.session.logged_in) {
     console.log("redirecting new-connection to home");
     debugger;
+>>>>>>> f6d7edf195439b578c4ec43b3424858991de8f32
     res.redirect("/");
     return;
   }
@@ -42,7 +48,7 @@ router.get("/connection", withAuth, async (req, res) => {
       ...user,
       //user: user.toJSON(),
       // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -51,7 +57,7 @@ router.get("/connection", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.render("/");
     return;
   }
@@ -59,6 +65,16 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+<<<<<<< HEAD
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("signup");
+});
+=======
   router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
       res.redirect('/');
@@ -67,4 +83,5 @@ router.get("/login", (req, res) => {
   
     res.render('signup');
   });
+>>>>>>> f6d7edf195439b578c4ec43b3424858991de8f32
 module.exports = router;
