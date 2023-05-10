@@ -11,12 +11,15 @@ Note.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    history: {
+      type: DataTypes.STRING,
+    },
 
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
@@ -29,7 +32,7 @@ Note.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "notes",
+    modelName: "note",
   }
 );
 
