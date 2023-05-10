@@ -2,20 +2,17 @@ const signupFormHandler = async function(event) {
     event.preventDefault();
   
     // queryselector for username and password
-    const usernameEl = document.querySelector('#username-input-signup');
-    const passwordEl = document.querySelector('#password-input-signup');
+    const email = document.querySelector('#email-input-signup');
+    const password = document.querySelector('#password-input-signup');
   
-    const response = await fetch('/api/user', {
+    const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({
-        username: usernameEl.value,
-        password: passwordEl.value,
-      }),
+      body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/connection');
     } else {
       alert('Failed to sign up');
     }
