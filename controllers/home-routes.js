@@ -42,7 +42,7 @@ router.get("/connection", withAuth, async (req, res) => {
       ...user,
       //user: user.toJSON(),
       // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -51,7 +51,7 @@ router.get("/connection", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.render("/");
     return;
   }
@@ -59,12 +59,12 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-  router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('signup');
-  });
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("signup");
+});
 module.exports = router;

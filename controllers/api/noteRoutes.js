@@ -15,12 +15,12 @@ router.get("/", async (req, res) => {
 
 //create new Note
 router.post("/", async (req, res) => {
-  const { name, history } = req.body;
+  const { name, word } = req.body;
   // create a new category
   try {
     const NoteData = await Note.create({
       name,
-      history,
+      word,
       user_id: req.session.user_id,
     });
 

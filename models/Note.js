@@ -15,7 +15,7 @@ Note.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    history: {
+    word: {
       type: DataTypes.STRING,
     },
 

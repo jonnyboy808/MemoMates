@@ -2,12 +2,15 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector("#connection-name").value.trim();
-  const history = document.querySelector("#history").value.trim();
+  const word = document.querySelector("#one-word").value.trim();
+  const lastCont = document.querySelector("#last-contact").value.trim();
+  const details = document.querySelector("#details").value.trim();
+  const steps = document.querySelector("#steps").value.trim();
 
-  if (name && history) {
+  if (name && word) {
     const response = await fetch("/api/notes", {
       method: "POST",
-      body: JSON.stringify({ name, history }),
+      body: JSON.stringify({ name, word }),
       headers: {
         "Content-Type": "application/json",
       },
