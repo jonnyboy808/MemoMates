@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // const router = require('express').Router();
 // const { Connection } = require('../models/');
 // const withAuth = require('../utils/auth');
@@ -8,23 +7,9 @@
 //   try {
 //     const connectionData = await Connection.findAll({
 //       where: {
-//         userId: req.session.userId,
+//         user_Id: req.session.user_Id,
 //       },
 //     });
-=======
-const router = require('express').Router();
-const { Connection } = require('../models/');
-const withAuth = require('../utils/auth');
-// routes to the logged in user dashboard
-// and displays all Connections
-router.get('/', withAuth, async (req, res) => {
-  try {
-    const connectionData = await Connection.findAll({
-      where: {
-        user_Id: req.session.user_Id,
-      },
-    });
->>>>>>> f6d7edf195439b578c4ec43b3424858991de8f32
 
 //     const connections = connectionData.map((connection) => connection.get({ plain: true }));
 
