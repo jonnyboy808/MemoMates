@@ -3,6 +3,7 @@ const newFormHandler = async (event) => {
 
   const name = document.querySelector("#connection-name").value.trim();
   const word = document.querySelector("#one-word").value.trim();
+  const last_contact = document.querySelector("#last-contact").value.trim();
   // const lastCont = document.querySelector("#last-contact").value.trim();
   // const details = document.querySelector("#details").value.trim();
   // const steps = document.querySelector("#steps").value.trim();
@@ -10,7 +11,7 @@ const newFormHandler = async (event) => {
   if (name && word) {
     const response = await fetch("/api/notes", {
       method: "POST",
-      body: JSON.stringify({ name, word }),
+      body: JSON.stringify({ name, word, last_contact }),
       headers: {
         "Content-Type": "application/json",
       },
