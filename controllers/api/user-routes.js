@@ -15,12 +15,14 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create({
+      name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     });
 
     req.session.save(() => {
       req.session.userId = newUser.id;
+      req.session.name = newUser.name;
       req.session.email = newUser.email;
       req.session.loggedIn = true;
 
@@ -30,6 +32,8 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 // post router for logging in and a 400 error if not found
 router.post('/login', async (req, res) => {
   try {
@@ -52,9 +56,9 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.userId = user.id;
+      req.session.user_Id = user.id;
       req.session.email = user.email;
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       res.json({ user, message: 'You are now logged in!' });
     });
@@ -64,7 +68,7 @@ router.post('/login', async (req, res) => {
 });
 // terminates the connection after logging out
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });
