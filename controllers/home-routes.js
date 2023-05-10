@@ -42,7 +42,7 @@ router.get("/connection", withAuth, async (req, res) => {
       ...user,
       //user: user.toJSON(),
       // Pass the logged in flag to the template
-      loggedIn: req.session.loggedIn,
+      logged_In: req.session.logged_In,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -51,7 +51,7 @@ router.get("/connection", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.loggedIn) {
+  if (req.session.logged_In) {
     res.render("/");
     return;
   }
