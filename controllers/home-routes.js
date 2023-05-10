@@ -23,8 +23,8 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/connection", withAuth, async (req, res) => {
   if (!req.session.loggedIn) {
-    console.log("redirecting new-connection to home");
-    debugger;
+    //console.log("redirecting new-connection to home");
+
     res.redirect("/");
     return;
   }
