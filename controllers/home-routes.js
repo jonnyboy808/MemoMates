@@ -22,14 +22,14 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/connection", withAuth, async (req, res) => {
-  if (!req.session.loggedIn) {
+  if (!req.session.logged_in) {
     console.log("redirecting new-connection to home");
     debugger;
     res.redirect("/");
     return;
   }
   try {
-    const userData = await User.findByPk(req.session.userId, {
+    const userData = await User.findByPk(req.session.user_Id, {
       include: [{ model: Note }],
     });
 
@@ -59,9 +59,9 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-  router.get("/signup", (req, res) => {
+  router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
-      res.redirect("/");
+      res.redirect('/');
       return;
     }
   
