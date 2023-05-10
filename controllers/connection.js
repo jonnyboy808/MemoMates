@@ -7,7 +7,7 @@ router.get('/', withAuth, async (req, res) => {
   try {
     const connectionData = await Connection.findAll({
       where: {
-        userId: req.session.userId,
+        user_Id: req.session.user_Id,
       },
     });
 
