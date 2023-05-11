@@ -45,6 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// pulls in the required file path 'controllers'
 app.use(require('./controllers/'));
 
 app.use(routes);
