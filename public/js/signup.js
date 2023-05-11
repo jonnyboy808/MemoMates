@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
     console.log(response);
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace('/connection');
     } else {
       alert(response.statusText);
     }
@@ -25,3 +25,6 @@ const signupFormHandler = async (event) => {
     .querySelector("#signup-form")
     .addEventListener("submit", signupFormHandler);
   
+
+ 
+    
