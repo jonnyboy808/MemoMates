@@ -27,35 +27,36 @@ const newFormHandler = async (event) => {
   }
 };
 
-const deleteClickHandler = async function() {
-  await fetch(`/api/notes/${id}`, {
-    method: 'DELETE'
-  });
-  document.location.replace('/connection');
-};
+// const deleteClickHandler = (event) => {
+//   event.preventDefault();
 
-// const delButtonHandler = async (event) => {
-//   if (event.target.hasAttribute("data-id")) {
-//     const id = event.target.getAttribute("data-id");
-//     //console.log("data-id");
-//     const response = await fetch(`/api/notes/${id}`, {
-//       method: "DELETE",
+//   const id = event.target.dataset.id;
+
+//   // Make a request to the API to delete the note
+//   fetch(`/api/notes/${id}`, {
+//     method: "DELETE",
+//   })
+//     .then((response) => {
+//       if (response.ok) {
+//         // The note was deleted successfully, so redirect the user to the connection page
+//         document.location.replace("/connection");
+//       } else {
+//         alert("Failed to delete note");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error(error);
 //     });
-
-//     if (response.ok) {
-//       document.location.replace("/profile");
-//     } else {
-//       alert("Failed to delete post");
-//     }
-//   }
 // };
+
 
 document
   .querySelector(".new-connection-form")
   .addEventListener("submit", newFormHandler);
+
   document
-  .querySelector('#delete-btn')
-  .addEventListener('click', deleteClickHandler);
+  .querySelector('.btn')
+  .addEventListener("submit", deleteClickHandler);
 
 // document
 //   .querySelector(".post-list")
