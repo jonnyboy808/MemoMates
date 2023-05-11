@@ -27,6 +27,7 @@ const newFormHandler = async (event) => {
   }
 };
 
+document.querySelector(".new-connection-form").addEventListener("submit", newFormHandler);
 
 
   const deleteClickHandler = async function() {
@@ -43,16 +44,11 @@ const newFormHandler = async (event) => {
   }
 };
 
-  document
-  .querySelector('.delbtn')
-  .addEventListener("click", deleteClickHandler);
+  document.querySelector('.delbtn').addEventListener("click", deleteClickHandler);
 
 
 
 
-document
-  .querySelector(".new-connection-form")
-  .addEventListener("submit", newFormHandler);
 
 
 
