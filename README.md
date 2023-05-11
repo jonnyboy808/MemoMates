@@ -62,195 +62,78 @@ Back-end a POST route to create a connection
 ## Code Example
 
 
-### Short example of Bulma being implemented 
+### Short example of bootstrap being implemented 
 ```html
-  <div class="flexbox">
-  <div class="container">
-    <div class="columns is-two-fifths">
-      <div class="column">
-        <label class="label">Find the Best Coffee in any City</label>
-        <input class="input is-normal" id="searchTbx" type="text" placeholder="City, State">
-        <button class="button is-info mt-2 is-fullwidth" id="searchButton">Search</button>
+ <ul class="col-auto">
+    {{#each notes }}
+      <div class="card">
+        <h2 class="card-header">
+          <a href="/notes/{{id}}">{{title}}</a>
+          
+          </h2>
+        <div class="card-body">
 ```
 
-#### Bulma Responsive Design
 
-![Bulma](./assets/images/responsive-design.gif)
-
-
-### Example of javascript code used to fetch coffee shop names and addresses from Bing Map API
+### Example of javascript code used to create a new note
 ```JS
-var bingApiUrl = "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=cafe&userLocation=" + coordinates[0] + "," + coordinates[1] + ",5000&key=" + bingApiKey;
-    fetch(bingApiUrl).then(function (response) {
-      if (response.ok) {
-      response.json().then(function (bingData) {
-        var coffeeShopsEl = document.getElementById("coffeeShops");
-          coffeeShopsEl.innerHTML = '';
-          var cafeData = bingData.resourceSets[0].resources;
-          console.log(cafeData);
-          for (var i = 0; i < cafeData.length; i++) {
-            var coffeeShop = {
-                name: cafeData[i].name,
-                coordinate: cafeData[i].point.coordinates,
-                address: cafeData[i].Address.formattedAddress
-            }
-                coffeeShopsData.push(coffeeShop);
-                showcoffeeShop(coffeeShop);
-                var cityWordArray = cityName.split("%20");
-                cityName = cityWordArray.join(" ");
-                Search(cityName)
-                }
-            })
-        }}
-    );
-                                
-```
-#### Bing Map API call in action
-![Bing API Search Gif](./assets/images/search-function.gif)
-
-### Calling Open Weather Map API 
-``` js
-function handleCallingApis(cityName) {
-    var coordinates = [];
-    var GeoApiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=" + weatherApiKey;
-    //This fetch brings the response about Geographical coordinates
-    fetch(GeoApiUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (geoData) {
-                //If the city is not found, the length of data list will be empty
-                if (geoData.length === 0) {
-                    // alert("The searched city is not found!");
-                    citySearch.value = "";
-                    var searchedCityModal = document.getElementById('searchedCityModal');
-                    searchedCityModal.classList.add('is-active');
-                    searchedCityModal.querySelector('.modal-close').addEventListener('click', function () {
-                        searchedCityModal.classList.remove('is-active');
-                    })
-
-                }
-                else {
-                    //If city is found, its longitude and lattitude will be retrieved and sent to the weather API
-                    coordinates.push(geoData[0].lat);
-                    coordinates.push(geoData[0].lon);
-                    // Call saveSearch function here
-                    saveSearch(cityName);
-                    //call the map api to show the curent city
-                    var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + coordinates[0] + "&lon=" + coordinates[1] + "&appid=" + weatherApiKey;
-                    //This fetch brings the response about today's weather
-                    fetch(weatherApiUrl).then(function (response) {
-                        if (response.ok) {
-                            response.json().then(function (todayData) {
-                                var tempFarenheit = parseFloat(((todayData.main.temp - 273) * 1.8) + 32).toFixed(2);
-                                var cityWordArray = cityName.split("%20");
-                                var searchedCityValue = cityWordArray.join(" ");
-                                var weatherCondition = {
-                                    city: searchedCityValue,
-                                    temp: tempFarenheit + " ºF",
-                                    icon: todayData.weather[0].icon
-                                }
-                                showWeatherSituation(weatherCondition)
-
-```
-
-#### Open Weather Map API call in action
-![Weather API Image](./assets/images/current_temp.png)
-
-
-### Quotable API Call
-``` js
-  var quoteEl = document.getElementById("quote");
-  quoteEl.textContent = "";
-  var quoteTitleEl = document.getElementById("quote-title");
-  quoteTitleEl.textContent = "";
-  //This fetch brings a random quote
-  var quoteApiUrl = "https://api.quotable.io/random?maxLength=120";
-  fetch(quoteApiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (quoteData) {
-        var quote = quoteData.content;
-        quoteEl.textContent = quote;
-        quoteTitleEl.textContent = "Quote of the day :";
-      });
-    }
-      else {
-        // alert("There is a connection error!")
-        var connectionError = document.getElementById('connectionError');
-        connectionError.classList.add('is-active');
-        connectionError.querySelector('modal-close').addEventListener('click', function () {
-        connectionError.classList.remove('is-active');
-      })
-    }
+//creates new Note
+router.post("/", async (req, res) => {
+  const { name, word, last_contact, details, steps } = req.body;
+  // create a new category for the note
+  try {
+    const NoteData = await Note.create({
+      name,
+      word,
+      last_contact,
+      details,
+      steps,
+      user_id: req.session.user_Id,
     });
-  });
+
+    res.status(200).json(NoteData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});                             
 ```
 
-#### Quotable API call in action
-![Quotable API Image](./assets/images/quotable.gif)
+### Example of notes being dynamically generated for html page
+``` js
+  {{#if notes.length}}
+    <div class="col-md-6 connection-list">
+      <h3>Saved Connections</h3>
 
-## Libraries Used
-### Soundcloud Library 
-``` html
-<div class="box" id="soundCloud">
-  <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay"
-       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/483718232&color=%23be8d34&auto_play=true&sharing=false&hide_related=true&show_user=false&show_reposts=false&buying=false">
-   </iframe>
-   <div style="font-size: 8px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-        <a href="https://soundcloud.com/lofi-hip-hop-music/sets/lofi-hip-hop-beats" title="𝗟𝗢𝗙𝗜" target="_blank" style="color: #be8d34; text-decoration: overline;">𝗟𝗢𝗙𝗜</a>
+      {{#each notes as |note|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/notes/{{note.id}}">{{note.name}}</a></h4>
+            <p>{{note.word}}</p>
+          </div>
+          <div class="col-md-4">
+            <button
+              class="btn btn-sm btn-danger delbtn"
+              data-id="{{note.id}}"
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
     </div>
+  {{/if}}
 </div>
 ```
 
-####  SoundCloud in action
-![Soundcloud](./assets/images/music.png)
 
-### Anime.js
-``` js
-const barista = document.querySelector('.barista');
-anime({
-  targets: barista,
-  keyframes: [
-    {translateY: -20},
-    {translateX: 75},
-    {translateY: 40},
-    {translateX: 0},
-    {translateY: 0}
-  ],
-  duration: 4000,
-  easing: 'easeOutElastic(1, .8)',
-});
-```
-
-#### Anime.js in action
-![Barista Logo Bouncing](./assets/images/barsta-anime.gif)
-
-
-Short example of additional styling that was added after Bulma layout
-```css
-#coffeeShops{
-    display:flex;
-    flex-direction:column;
-    height: 300px;
-    box-shadow: 5px;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 10px;
-    -webkit-line-clamp: 2;
-    text-overflow: ellipsis;
-}
-```
 
 ## Usage 
 
-Once the deployed site link is opened, the user can start their search for a new cafe using the search box by entering a city of their choosing. The page will dynamically update and display coffee shops of the inputed city, generating the name and adresses in a scroll list. That same search will also produce a randomly generated quote of the day and the current weather conditions of the city searched will be displayed in the top right of the page, which can be seen within the image below.
-![Fully Functional](assets/images/fully-functional.png)
+
 
 
 
 ## Learning Points 
 
-The authors have learned to do research into API and server-side API independent of assistance and learned to overcome issues of implementation if there were any. We also learned to pivot to use alternative API providers to fit our user story. Problem-solving minds were needed in developing application as a group.
-We have learned to tie different information from different API to make useful applications that can be used in real life.
-We have explored and found that there are numerous resources that we can use and how we can improve our applications for the future. We have also learned how to implement agile working practices and to overcome issues such as Git merge conflicts.
+
 
 ---
 
