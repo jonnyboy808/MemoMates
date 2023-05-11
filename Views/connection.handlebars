@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2> Welcome,<span class="green">{{name}}!</span></h2>
   </div>
 </div>
 
@@ -69,12 +69,12 @@
 
   {{#if notes.length}}
     <div class="col-md-6 connection-list">
-      <h3>Saved Connections</h3>
+      <h3 class="green">Saved Connections</h3>
 
       {{#each notes as |note|}}
         <div class="row mb-2">
           <div class="col-md-8">
-            <h4><a href="/notes/{{note.id}}">{{note.name}}</a></h4>
+            <h4 class="fancy">{{note.name}}</h4>
             <p>{{note.word}}</p>
           </div>
           <div class="col-md-4">

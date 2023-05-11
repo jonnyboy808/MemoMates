@@ -14,3 +14,11 @@
 } */
 
 /* .form-input{}; */
+
+.green {
+  color: green;
+}
+
+.fancy {
+  font-family: cursive;
+}
