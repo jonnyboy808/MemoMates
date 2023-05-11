@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
       req.session.name = newUser.name;
       req.session.email = newUser.email;
 
-      req.session.logged_In = true;
+      req.session.logged_in = true;
 
 
       res.json(newUser);

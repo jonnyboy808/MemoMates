@@ -29,17 +29,23 @@ const newFormHandler = async (event) => {
 
 
 
-  // const deleteClickHandler = async function() {
-  //   await fetch(`/notes/${noteId}`, {
-  //     method: 'DELETE'
-  //   });
-  
-  //   document.location.replace('/connection');
-  // };
+  const deleteClickHandler = async function() {
 
-  // document
-  // .querySelector('.delbtn')
-  // .addEventListener("click", deleteClickHandler);
+    const id = this.dataset.id;
+    const response = await fetch(`/api/notes/${id}`, {
+      method: 'DELETE'
+    });
+  
+    if (response.status === 200) {
+    document.location.replace('/connection');
+  } else {
+    alert('There was an error deleting the note.');
+  }
+};
+
+  document
+  .querySelector('.delbtn')
+  .addEventListener("click", deleteClickHandler);
 
 
 

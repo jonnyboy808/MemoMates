@@ -11,8 +11,12 @@ Note.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-Note.hasMany(Items, {});
+Note.hasMany(Items, {
+  onDelete: "CASCADE",
+});
 
-Items.belongsTo(Note, {});
+Items.belongsTo(Note, {
+  foreignKey: "note_id",
+});
 
 module.exports = { User, Note, Items };
