@@ -10,10 +10,12 @@
 
  <ul class="col-auto">
     {{#each notes as |note|}}
-      <div>
-        <h2>{{title}}</h2>
+      <div class="card">
+        <h2 class="card-header">{{title}}</h2>
+        <div class="card-body">
         <p>{{word}}</p>
         <p>{{body}}</p>
+      </div>
       </div>
     {{/each}}
   </ul>
