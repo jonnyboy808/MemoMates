@@ -27,6 +27,13 @@ const newFormHandler = async (event) => {
   }
 };
 
+const deleteClickHandler = async function() {
+  await fetch(`/api/notes/${id}`, {
+    method: 'DELETE'
+  });
+  document.location.replace('/connection');
+};
+
 // const delButtonHandler = async (event) => {
 //   if (event.target.hasAttribute("data-id")) {
 //     const id = event.target.getAttribute("data-id");
@@ -46,6 +53,9 @@ const newFormHandler = async (event) => {
 document
   .querySelector(".new-connection-form")
   .addEventListener("submit", newFormHandler);
+  document
+  .querySelector('#delete-btn')
+  .addEventListener('click', deleteClickHandler);
 
 // document
 //   .querySelector(".post-list")

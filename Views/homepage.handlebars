@@ -1,25 +1,26 @@
 <div class="container">
   <h1>My Notes</h1>
-  {{#if notes}}
-    <div class="row">
-      {{#each notes}}
-        <div class="col-md-6">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h2>{{title}}</h2>
-              <p class="card-text">{{body}}</p>
-              <a href="/notes/{{id}}" class="btn btn-primary">View Note &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Created on {{createdAt}}
-            </div>
+  {{#if notes.length}}
+    <div class="col-md-6 connection-list">
+      <h3>Saved Connections</h3>
+
+      {{#each notes as |note|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/notes/{{note.id}}">{{note.name}}</a></h4>
+            <p>{{note.word}}</p>
+          </div>
+          <div class="col-md-4">
+            <button
+              class="btn btn-sm btn-danger delbtn"
+              data-id="{{note.id}}"
+            >DELETE</button>
           </div>
         </div>
       {{/each}}
     </div>
-  {{else}}
-    <p>No notes yet!</p>
   {{/if}}
 </div>
+<script src="./js/connection.js"></script>
 
 <script src="/js/logout.js"></script>
