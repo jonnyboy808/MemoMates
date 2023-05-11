@@ -4,6 +4,7 @@ const withAuth = require("../utils/auth");
 
 
 //Prevent non logged in User from viewing the home page
+
 router.get("/", withAuth, async (req, res) => {
   try {
     const notesData = await Note.findAll({
