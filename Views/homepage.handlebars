@@ -8,13 +8,13 @@
 <body>
   <h1>My Notes</h1>
 
- <ul>
+ <ul class="col-auto">
     {{#each notes}}
-      <li>
+      <div>
         <h2>{{title}}</h2>
         <p>{{word}}</p>
         <p>{{body}}</p>
-      </li>
+      </div>
     {{/each}}
   </ul>
   </body>
