@@ -49,6 +49,7 @@ app.use(require('./controllers/'));
 
 app.use(routes);
 
+// listens to active port
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
   sequelize.sync({ force: false });
