@@ -9,11 +9,14 @@
   <h1>My Notes</h1>
 
  <ul class="col-auto">
-    {{#each notes as |note|}}
+    {{#each notes }}
       <div class="card">
-        <h2 class="card-header">{{title}}</h2>
+        <h2 class="card-header">
+          <a href="/notes/{{id}}">{{title}}</a>
+          
+          </h2>
         <div class="card-body">
-        <p>{{word}}</p>
+        <p>One Word: {{word}}</p>
         <p>{{body}}</p>
       </div>
       </div>

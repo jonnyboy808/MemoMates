@@ -9,6 +9,7 @@ User.hasMany(Note, {
 
 Note.belongsTo(User, {
   foreignKey: "user_id",
+  onDelete: 'CASCADE'
 });
 
 Note.hasMany(Items, {});

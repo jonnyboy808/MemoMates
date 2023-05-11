@@ -29,17 +29,17 @@ const newFormHandler = async (event) => {
 
 
 
-  // const deleteClickHandler = async function() {
-  //   await fetch(`/notes/${noteId}`, {
-  //     method: 'DELETE'
-  //   });
+  const deleteClickHandler = async function() {
+    await fetch(`/notes/${Id}`, {
+      method: 'DELETE'
+    });
   
-  //   document.location.replace('/connection');
-  // };
+    document.location.replace('/connection');
+  };
 
-  // document
-  // .querySelector('.delbtn')
-  // .addEventListener("click", deleteClickHandler);
+  document
+  .querySelector('.delbtn')
+  .addEventListener("click", deleteClickHandler);
 
 
 
