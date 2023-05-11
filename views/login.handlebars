@@ -1,23 +1,27 @@
 <div class="card"  >
-  <div class="card-header" style="background-color: rgb(45, 108, 45)" >
+  <div class="card-header" style="background-color: rgb(49, 110, 49)" >
     <h2>Login </h2>
   </div>
-  <form id="login-form" class="card-body">
-    <div>
-      <label for="email-input-login">Email</label>
-      <input type="text" id="email-input-login" />
-    </div>
-    <div>
-      <label for="password-input-login" class="form-label">Password</label>
-      <input type="password" id="password-input-login" />
-    </div>
-    <button
-      type="submit"
-      id="login-btn"
-      class="btn btn-secondary btn-lg"
-    >Login</button>
-    <a type="button" class="btn btn-secondary btn-lg" href="/signup">Sign up</a>
-  </form>
+<form id="login-form" class="card-body">
+  
+  <div class="input-group mb-3">
+    <label for="email-input-login"></label>
+    <input type="text" id="email-input-login" class="form-control" placeholder="Enter your email" />
+    <span class="input-group-text">@example.com</span>
+  </div>
+
+  <div class="input-group mb-3">
+    <label for="password-input-login" class="form-label"></label>
+    <input type="password" id="password-input-login" class="form-control" placeholder="Enter your password" />
+  </div>
+
+  <button
+    type="submit"
+    id="login-btn"
+    class="btn btn-secondary btn-lg"
+  >Login</button>
+  <a type="button" class="btn btn-secondary btn-lg" href="/signup">Sign up</a>
+</form>
 </div>
 
 <script src="/js/login.js"></script>

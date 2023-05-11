@@ -1,24 +1,29 @@
 <div class="card">
-  <div class="card-header">
+  <div class="card-header" style="background-color: rgb(49, 110, 49)">
     <h2>Sign Up</h2>
   </div>
     <form id="signup-form" class="card-body">
-      <div>
-        <label for="name-input-signup">Name</label>
-        <input type="text" id="name-input-signup" />
+
+      <div class="input-group mb-3">
+        <label for="name-input-signup" class="form-label"></label>
+        <input type="text" id="name-input-signup" class="form-control" placeholder="Enter your name"/>
       </div>
-      <div>
-        <label for="email-input-signup">Email</label>
-        <input type="text" id="email-input-signup" />
+
+      <div class="input-group mb-3">
+        <label for="email-input-signup"></label>
+        <input type="text" id="email-input-signup" class="form-control" placeholder="Enter your email"/>
+        <span class="input-group-text">@example.com</span>
       </div>
-      <div>
-        <label for="password-input-signup">Password</label>
-        <input type="password" id="password-input-signup" />
+
+      <div class="input-group mb-3">
+        <label for="password-input-signup" class="form-label"></label>
+        <input type="password" id="password-input-signup" class="form-control" placeholder="Enter a password"/>
       </div>
+
       <button type="submit" 
       id="signup-btn" 
       class="btn btn-secondary btn-lg"
-       >Signup</button>
+       >Sign up</button>
       <a type="button" class="btn btn-secondary btn-lg" href="/login">Login instead</a>
     </form>
   </div>
