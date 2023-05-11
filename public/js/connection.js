@@ -27,36 +27,28 @@ const newFormHandler = async (event) => {
   }
 };
 
-// const deleteClickHandler = (event) => {
-//   event.preventDefault();
 
-//   const id = event.target.dataset.id;
 
-//   // Make a request to the API to delete the note
-//   fetch(`/api/notes/${id}`, {
-//     method: "DELETE",
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         // The note was deleted successfully, so redirect the user to the connection page
-//         document.location.replace("/connection");
-//       } else {
-//         alert("Failed to delete note");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
+  // const deleteClickHandler = async function() {
+  //   await fetch(`/notes/${noteId}`, {
+  //     method: 'DELETE'
+  //   });
+  
+  //   document.location.replace('/connection');
+  // };
+
+  // document
+  // .querySelector('.delbtn')
+  // .addEventListener("click", deleteClickHandler);
+
+
 
 
 document
   .querySelector(".new-connection-form")
   .addEventListener("submit", newFormHandler);
 
-  document
-  .querySelector('.btn')
-  .addEventListener("submit", deleteClickHandler);
+
 
 // document
 //   .querySelector(".post-list")
