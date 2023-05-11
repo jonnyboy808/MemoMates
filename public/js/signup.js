@@ -15,13 +15,16 @@ const signupFormHandler = async (event) => {
     console.log(response);
 
     if (response.ok) {
-      document.location.replace("/connection");
+      document.location.replace('/connection');
     } else {
       alert(response.statusText);
     }
   }
 };
   document
-    .querySelector('#signup-form')
-    .addEventListener('submit', signupFormHandler);
+    .querySelector("#signup-form")
+    .addEventListener("submit", signupFormHandler);
   
+
+ 
+    

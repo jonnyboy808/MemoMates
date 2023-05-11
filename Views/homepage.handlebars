@@ -1,25 +1,28 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+</head>
+<body>
   <h1>My Notes</h1>
-  {{#if notes}}
-    <div class="row">
-      {{#each notes}}
-        <div class="col-md-6">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h2>{{title}}</h2>
-              <p class="card-text">{{body}}</p>
-              <a href="/notes/{{id}}" class="btn btn-primary">View Note &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Created on {{createdAt}}
-            </div>
-          </div>
-        </div>
-      {{/each}}
-    </div>
-  {{else}}
-    <p>No notes yet!</p>
-  {{/if}}
-</div>
+
+ <ul class="col-auto">
+    {{#each notes }}
+      <div class="card">
+        <h2 class="card-header">
+          <a href="/notes/{{id}}">{{title}}</a>
+          
+          </h2>
+        <div class="card-body">
+        <p>One Word: {{word}}</p>
+        <p>{{body}}</p>
+      </div>
+      </div>
+    {{/each}}
+  </ul>
+  </body>
+</html>
 
 <script src="/js/logout.js"></script>

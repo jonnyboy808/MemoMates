@@ -10,4 +10,9 @@ Note.belongsTo(User, {
   foreignKey: "user_id",
 });
 
+
 module.exports = { User, Note };
+
+
+module.exports = { User, Note };
+

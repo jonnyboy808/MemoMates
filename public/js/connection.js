@@ -27,25 +27,34 @@ const newFormHandler = async (event) => {
   }
 };
 
-// const delButtonHandler = async (event) => {
-//   if (event.target.hasAttribute("data-id")) {
-//     const id = event.target.getAttribute("data-id");
-//     //console.log("data-id");
-//     const response = await fetch(`/api/notes/${id}`, {
-//       method: "DELETE",
-//     });
 
-//     if (response.ok) {
-//       document.location.replace("/profile");
-//     } else {
-//       alert("Failed to delete post");
-//     }
-//   }
-// };
+
+  const deleteClickHandler = async function() {
+
+    const id = this.dataset.id;
+    const response = await fetch(`/api/notes/${id}`, {
+      method: 'DELETE'
+    });
+  
+    if (response.status === 200) {
+    document.location.replace('/connection');
+  } else {
+    alert('There was an error deleting the note.');
+  }
+};
+
+  document
+  .querySelector('.delbtn')
+  .addEventListener("click", deleteClickHandler);
+
+
+
 
 document
   .querySelector(".new-connection-form")
   .addEventListener("submit", newFormHandler);
+
+
 
 // document
 //   .querySelector(".post-list")
