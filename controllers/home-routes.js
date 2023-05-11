@@ -2,20 +2,23 @@ const router = require("express").Router();
 const { User, Note } = require("../models");
 const withAuth = require("../utils/auth");
 
+
 //Prevent non logged in User from viewing the home page
 router.get("/", withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
+    const notesData = await Note.findAll({
       attributes: { exclude: ["password"] },
-      order: [["email", "ASC"]],
     });
 
-    const users = userData.map((user) => user.get({ plain: true }));
-
-    res.render("homepage", {
-      users,
-      logged_in: req.session.logged_in,
+    const notes = notesData.map((note) => {
+      return {
+        title: note.name,
+        word: note.word,
+        body: note.details,
+      };
     });
+
+    res.render("homepage", { notes });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -87,7 +90,7 @@ router.get("/login", (req, res) => {
       return;
     }
   
-    res.render('signup');
+    res.render("signup");
   });
 
 module.exports = router;

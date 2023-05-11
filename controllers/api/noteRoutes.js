@@ -47,22 +47,38 @@ router.post("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const NoteData = await Note.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!NoteData) {
-      res.status(404).json({ message: "No Notes found with this id!" });
+    const noteId = req.params.id;
+    const note = await Note.findByPk(noteId);
+    if (!note) {
+      res.status(404).json({ message: "Note not found" });
       return;
     }
 
-    res.status(200).json(NoteData);
+    await note.destroy();
+    res.status(200).json({ message: "Note deleted" });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
+
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     const NoteData = await Note.destroy({
+//       where: {
+//         id: req.params.id,
+//         // user_id: req.session.user_id,
+//       },
+//     });
+
+//     if (!NoteData) {
+//       res.status(404).json({ message: "No Notes found with this id!" });
+//       return;
+//     }
+
+//     res.status(200).json(NoteData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
