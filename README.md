@@ -12,6 +12,7 @@
 | bcrypt   | [https://www.npmjs.com/package/bcrypt](https://www.npmjs.com/package/bcrypt)   |
 | Express   | [https://www.npmjs.com/package/express](https://www.npmjs.com/package/express)  |
 | Handlebars  | [https://handlebarsjs.com](https://handlebarsjs.com)  |
+| Node JS | [https://nodejs.org/en](https://nodejs.org/en)  |
 
 ---
 
@@ -19,7 +20,7 @@
 
 [Visit the Deployed Site](https://memomates.herokuapp.com/)
 
-The site is designed to be simple and easy to use, with a minimalistic interface that allows you to quickly create and store notes about people you want to reconnect with. Whether it's an old friend from high school, a former colleague, or a distant relative, MemoMates can help you stay organized and focused on reaching out to those you've lost touch with. 
+The site is designed to be simple, easy, and free to use, with a minimalistic interface that allows you to quickly create and store notes about people you want to reconnect with. Whether it's an old friend from high school, a former colleague, or a distant relative, MemoMates can help you stay organized and focused on reaching out to those you've lost touch with. 
 
 ## User Stories
 ``` 
@@ -145,6 +146,9 @@ Below is each contributors account.
 - Jonathan: [Github](https://github.com/jonnyboy808/)
 - Sabeen: [Github](https://github.com/Sabeen44)
 ```
+## Learning Points
+
+The authors of this website have faced and overcome many challenges throughout the development process. Whether it was merging code together or dealing with duplicate files, the authors have always found a way to overcome these obstacles. They have also learned to use new technologies, such as the AOS library, to create animations that enhance the user experience. With each new challenge, the authors have gained valuable knowledge that will help them in future projects.
 
 
 ## License
