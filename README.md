@@ -132,9 +132,6 @@ This website is very simple and quick to get started. After visiting the site wi
 
 
 
-## Learning Points 
-
-
 
 ---
 
