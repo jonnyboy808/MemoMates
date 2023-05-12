@@ -12,14 +12,15 @@
 | bcrypt   | [https://www.npmjs.com/package/bcrypt](https://www.npmjs.com/package/bcrypt)   |
 | Express   | [https://www.npmjs.com/package/express](https://www.npmjs.com/package/express)  |
 | Handlebars  | [https://handlebarsjs.com](https://handlebarsjs.com)  |
+| Node JS | [https://nodejs.org/en](https://nodejs.org/en)  |
 
 ---
 
 ## Description 
 
-[Visit the Deployed Site](#)
+[Visit the Deployed Site](https://memomates.herokuapp.com/)
 
-The site is designed to be simple and easy to use, with a minimalistic interface that allows you to quickly create and store notes about people you want to reconnect with. Whether it's an old friend from high school, a former colleague, or a distant relative, MemoMates can help you stay organized and focused on reaching out to those you've lost touch with. 
+The site is designed to be simple, easy, and free to use, with a minimalistic interface that allows you to quickly create and store notes about people you want to reconnect with. Whether it's an old friend from high school, a former colleague, or a distant relative, MemoMates can help you stay organized and focused on reaching out to those you've lost touch with. 
 
 ## User Stories
 ``` 
@@ -48,7 +49,7 @@ Front-end input fields, submit button event listener with function to send post 
 Back-end a POST route to create a connection
 ```
 
-![User Stories Finished Product](#)
+![User Stories Finished Product](/public/images/working-site.gif)
 
 
 ## Table of Contents
@@ -127,11 +128,9 @@ router.post("/", async (req, res) => {
 
 ## Usage 
 
+This website is very simple and quick to get started. After visiting the site with the link from above, users are asked to login. If no previous account exists the user may sign up simply by clicking the sign up button, this will take the user to a page that will ask for their name, email, and password. After creating an account the user is taken to the New Connections landing page where the user can enter details of the person who they lost connection with. All previous notes and connection details are then rendered to the homepage where the user can view them all. Lastly after 5 minutes the user will be automatically signed out for security purposes, otherwise they can manually logout by clicking the logout button within the header
 
 
-
-
-## Learning Points 
 
 
 
@@ -147,6 +146,9 @@ Below is each contributors account.
 - Jonathan: [Github](https://github.com/jonnyboy808/)
 - Sabeen: [Github](https://github.com/Sabeen44)
 ```
+## Learning Points
+
+The authors of this website have faced and overcome many challenges throughout the development process. Whether it was merging code together or dealing with duplicate files, the authors have always found a way to overcome these obstacles. They have also learned to use new technologies, such as the AOS library, to create animations that enhance the user experience. With each new challenge, the authors have gained valuable knowledge that will help them in future projects.
 
 
 ## License
