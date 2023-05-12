@@ -15,6 +15,10 @@
 
 /* .form-input{}; */
 
-*{
-  background-color: bisque;
+.green {
+  color: green;
+}
+
+.fancy {
+  font-family: cursive;
 }
