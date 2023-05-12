@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+  </head>
+  <body>
+    <h1>My Connections</h1>
+
+ <ul class="col-auto">
+    {{#each notes }}
+      <div class="card">
+        <h2 class="card-header"  style="background-color: rgb(49, 110, 49)">
+          <a>{{title}}
+          </a>
+          </h2>
+          <div class="card-body">
+            <p>One Word: {{word}}</p>
+            <p>{{body}}</p>
+          </div>
+        </div>
+      {{/each}}
+    </ul>
+  </body>
+</html>
+
+<script src="/js/logout.js"></script>s
